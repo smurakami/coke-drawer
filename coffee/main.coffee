@@ -74,12 +74,15 @@ $ ->
     $('#main_canvas').bind 'touchstart', (e) ->
         e = convert e
         app.touchStart(e)
+        e.preventDefault()
     $('#main_canvas').bind 'mousedown', (e) ->
         e = convert e
         app.touchStart(e)
+        e.preventDefault()
     $('#main_canvas').bind 'touchmove', (e) ->
         e = convert e
         app.touchMove(e)
+        e.preventDefault()
     $('#main_canvas').bind 'mousemove', (e) ->
         app.touchMove(e)
     $('#main_canvas').bind 'touchend', (e) ->

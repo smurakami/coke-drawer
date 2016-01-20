@@ -109,15 +109,18 @@
     app = new Main();
     $('#main_canvas').bind('touchstart', function(e) {
       e = convert(e);
-      return app.touchStart(e);
+      app.touchStart(e);
+      return e.preventDefault();
     });
     $('#main_canvas').bind('mousedown', function(e) {
       e = convert(e);
-      return app.touchStart(e);
+      app.touchStart(e);
+      return e.preventDefault();
     });
     $('#main_canvas').bind('touchmove', function(e) {
       e = convert(e);
-      return app.touchMove(e);
+      app.touchMove(e);
+      return e.preventDefault();
     });
     $('#main_canvas').bind('mousemove', function(e) {
       return app.touchMove(e);
