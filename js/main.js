@@ -105,15 +105,18 @@
   })();
 
   $(function() {
-    var _loop, app;
+    var _loop, app, convert;
     app = new Main();
     $('#main_canvas').bind('touchstart', function(e) {
+      e = convert(e);
       return app.touchStart(e);
     });
     $('#main_canvas').bind('mousedown', function(e) {
+      e = convert(e);
       return app.touchStart(e);
     });
     $('#main_canvas').bind('touchmove', function(e) {
+      e = convert(e);
       return app.touchMove(e);
     });
     $('#main_canvas').bind('mousemove', function(e) {
@@ -125,6 +128,11 @@
     $('#main_canvas').bind('mouseup', function(e) {
       return app.touchEnd(e);
     });
+    convert = function(e) {
+      e.pageX = e.originalEvent.changedTouches[0].pageX;
+      e.pageY = e.originalEvent.changedTouches[0].pageY;
+      return e;
+    };
     _loop = function() {
       app.update();
       app.draw();

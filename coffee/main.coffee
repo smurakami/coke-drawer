@@ -72,10 +72,13 @@ class Main
 $ ->
     app = new Main()
     $('#main_canvas').bind 'touchstart', (e) ->
+        e = convert e
         app.touchStart(e)
     $('#main_canvas').bind 'mousedown', (e) ->
+        e = convert e
         app.touchStart(e)
     $('#main_canvas').bind 'touchmove', (e) ->
+        e = convert e
         app.touchMove(e)
     $('#main_canvas').bind 'mousemove', (e) ->
         app.touchMove(e)
@@ -83,6 +86,11 @@ $ ->
         app.touchEnd(e)
     $('#main_canvas').bind 'mouseup', (e) ->
         app.touchEnd(e)
+
+    convert = (e) ->
+        e.pageX = e.originalEvent.changedTouches[0].pageX
+        e.pageY = e.originalEvent.changedTouches[0].pageY
+        return e
 
     _loop = ->
         app.update()
