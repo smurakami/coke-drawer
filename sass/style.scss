@@ -1,8 +1,14 @@
 html, body {
     overflow: hidden;
     height: 100%;
+    background-color: '#E6040A';
+}
+
+#wave_canvas {
+    position: fixed;
+    z-index: -1;
 }
 
 #main_canvas {
-    background-color: red;
+    background-color: clear;
 }
