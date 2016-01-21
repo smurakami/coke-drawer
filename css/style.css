@@ -29,4 +29,17 @@ html, body {
     font-size: 16px;
     font-weight: bold; }
 
+#twitter_button {
+  position: fixed; }
+  #twitter_button img {
+    width: 50px;
+    height: 44px; }
+
+#twitter_message {
+  color: white;
+  text-align: center;
+  margin-top: 300px; }
+  #twitter_message p {
+    margin-bottom: 4px; }
+
 /*# sourceMappingURL=style.css.map */

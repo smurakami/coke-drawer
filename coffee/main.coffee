@@ -23,8 +23,9 @@ class Main
         @ctx = @canvas.getContext('2d')
 
     initCSS: ->
-        $('#erase_button')
-            .css('margin-top', - 44 - 10)
+        $('#erase_button').css('margin-top', - 44 - 10)
+        $('#twitter_button').css('margin-top', - 44 - 10)
+                            .css('margin-left', $(window).width() - 50 - 10)
 
 
     update: ->

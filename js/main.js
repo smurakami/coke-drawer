@@ -39,7 +39,8 @@
     };
 
     Main.prototype.initCSS = function() {
-      return $('#erase_button').css('margin-top', -44 - 10);
+      $('#erase_button').css('margin-top', -44 - 10);
+      return $('#twitter_button').css('margin-top', -44 - 10).css('margin-left', $(window).width() - 50 - 10);
     };
 
     Main.prototype.update = function() {

@@ -8,14 +8,9 @@
   %link{:href => "css/style.css", :rel => "stylesheet", :type => "text/css"}/
   %script{:src => "js/jquery-2.1.0.min.js"}
   %script{:src => "js/wave_canvas.js"}
-  %script{:src => "js/main.js"}
+  / %script{:src => "js/main.js"}
 %body
   %canvas#wave_canvas
-  %canvas#main_canvas
-  #erase_button
-    .box
-    .text
-      ERASE
-  #twitter_button
-    %a{ href: 'twitter.html' }
-      %img{ src: "images/twitter.png" }
+  #twitter_message
+    %p ここからtwitterで
+    %p 応援メッセージをシェアする予定です。
