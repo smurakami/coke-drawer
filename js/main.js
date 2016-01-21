@@ -13,6 +13,7 @@
   Main = (function() {
     function Main() {
       this.initCanvas();
+      this.initCSS();
       this.touching = false;
       this.pos = {
         x: 0,
@@ -34,6 +35,10 @@
       this.canvas.width = width;
       this.canvas.height = height;
       return this.ctx = this.canvas.getContext('2d');
+    };
+
+    Main.prototype.initCSS = function() {
+      return $('#erase_button').css('margin-top', -44 - 10);
     };
 
     Main.prototype.update = function() {
@@ -118,6 +123,9 @@
       return e.preventDefault();
     });
     $('#main_canvas').bind('touchmove', function(e) {
+      var forceLevel;
+      forceLevel = event["webkitForce"];
+      console.log(forceLevel);
       e = convert(e);
       app.touchMove(e);
       return e.preventDefault();
@@ -132,8 +140,13 @@
       return app.touchEnd(e);
     });
     convert = function(e) {
-      e.pageX = e.originalEvent.changedTouches[0].pageX;
-      e.pageY = e.originalEvent.changedTouches[0].pageY;
+      if (!e.pageX) {
+        e.pageX = e.originalEvent.changedTouches[0].pageX;
+        e.pageY = e.originalEvent.changedTouches[0].pageY;
+        e.force = e.originalEvent.changedTouches[0].force;
+      } else {
+        e.force = null;
+      }
       return e;
     };
     _loop = function() {

@@ -6,6 +6,7 @@ dist_threshold = 10
 class Main
     constructor:  ->
         @initCanvas()
+        @initCSS()
         @touching = false
         @pos = {x: 0, y: 0}
         @prev_pos = {x: 0, y: 0}
@@ -19,6 +20,11 @@ class Main
         @canvas.width = width
         @canvas.height = height
         @ctx = @canvas.getContext('2d')
+
+    initCSS: ->
+        $('#erase_button')
+            .css('margin-top', - 44 - 10)
+
 
     update: ->
         dx = @pos.x - @prev_pos.x
@@ -80,6 +86,8 @@ $ ->
         app.touchStart(e)
         e.preventDefault()
     $('#main_canvas').bind 'touchmove', (e) ->
+        forceLevel = event["webkitForce"]
+        console.log forceLevel
         e = convert e
         app.touchMove(e)
         e.preventDefault()
@@ -91,8 +99,13 @@ $ ->
         app.touchEnd(e)
 
     convert = (e) ->
-        e.pageX = e.originalEvent.changedTouches[0].pageX
-        e.pageY = e.originalEvent.changedTouches[0].pageY
+        if not e.pageX
+            e.pageX = e.originalEvent.changedTouches[0].pageX
+            e.pageY = e.originalEvent.changedTouches[0].pageY
+            e.force = e.originalEvent.changedTouches[0].force
+        else
+            e.force = null
+        # console.log e.force
         return e
 
     _loop = ->

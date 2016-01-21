@@ -344,7 +344,7 @@
         }
         c = this.array[i];
         x = (c.x + c.x_wave) * size - margin;
-        y = this.canvas.height * (1 - SharedInfo.wave_height * c.y);
+        y = this.canvas.height * (1 - c.y);
         this.ctx.beginPath();
         this.ctx.arc(x, y, c.size, 0, 2 * Math.PI, false);
         this.ctx.fill();

@@ -1,7 +1,8 @@
 html, body {
   overflow: hidden;
   height: 100%;
-  background-color: '#E6040A'; }
+  background-color: '#E6040A';
+  position: relative; }
 
 #wave_canvas {
   position: fixed;
@@ -9,5 +10,23 @@ html, body {
 
 #main_canvas {
   background-color: clear; }
+
+#erase_button {
+  position: fixed;
+  height: 44px; }
+  #erase_button .box {
+    float: left;
+    width: 44px;
+    height: 44px;
+    margin-left: 8px;
+    border-radius: 4px;
+    background-color: white; }
+  #erase_button .text {
+    color: white;
+    padding-top: 12px;
+    float: left;
+    margin-left: 4px;
+    font-size: 16px;
+    font-weight: bold; }
 
 /*# sourceMappingURL=style.css.map */

@@ -219,7 +219,7 @@ class Bubble
         continue
       c = @array[i]
       x = (c.x + c.x_wave) * size - margin
-      y = @canvas.height * (1 - SharedInfo.wave_height * c.y)
+      y = @canvas.height * (1 - c.y)
       @ctx.beginPath()
       @ctx.arc(x, y,
         c.size, 0, 2 * Math.PI, false)

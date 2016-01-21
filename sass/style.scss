@@ -2,6 +2,7 @@ html, body {
     overflow: hidden;
     height: 100%;
     background-color: '#E6040A';
+    position: relative;
 }
 
 #wave_canvas {
@@ -11,4 +12,25 @@ html, body {
 
 #main_canvas {
     background-color: clear;
+}
+
+#erase_button {
+    position: fixed;
+    height: 44px;
+    .box {
+        float: left;
+        width: 44px;
+        height: 44px;
+        margin-left: 8px;
+        border-radius: 4px;
+        background-color: white;
+    }
+    .text {
+        color: white;
+        padding-top: 12px;
+        float: left;
+        margin-left: 4px;
+        font-size: 16px;
+        font-weight: bold;
+    }
 }
