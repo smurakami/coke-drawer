@@ -13,7 +13,7 @@
       y: 0,
       z: 0
     },
-    wave_height: 0.85
+    wave_height: 0.9
   };
 
   window.SharedInfo = SharedInfo;

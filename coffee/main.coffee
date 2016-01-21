@@ -12,6 +12,7 @@ class Main
         @prev_pos = {x: 0, y: 0}
         @radius = min_radius
         @prev_radius = min_radius
+        @force = null
 
     initCanvas: ->
         width = $(window).width()
@@ -39,6 +40,11 @@ class Main
             @radius = max_radius
         if @radius < min_radius
             @radius = min_radius
+
+        # if @force
+        #     if @force < 1
+        #         @radius *= 4
+        #     @radius *= @force
 
     draw: ->
         if not @touching
@@ -75,9 +81,12 @@ class Main
         @pos.y = e.pageY
         @prev_pos = {x: @pos.x, y: @pos.y}
         @touching = true
+        @force = e.force
+        @radius = min_radius
     touchMove: (e) ->
         @pos.x =  e.pageX
         @pos.y = e.pageY
+        @force = e.force
     touchEnd: (e) ->
         @touching = false
 
@@ -92,9 +101,8 @@ $ ->
         app.touchStart(e)
         e.preventDefault()
     $('#main_canvas').bind 'touchmove', (e) ->
-        forceLevel = event["webkitForce"]
-        console.log forceLevel
         e = convert e
+        console.log e.force
         app.touchMove(e)
         e.preventDefault()
     $('#main_canvas').bind 'mousemove', (e) ->

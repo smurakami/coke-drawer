@@ -25,6 +25,7 @@
       };
       this.radius = min_radius;
       this.prev_radius = min_radius;
+      this.force = null;
     }
 
     Main.prototype.initCanvas = function() {
@@ -100,12 +101,15 @@
         x: this.pos.x,
         y: this.pos.y
       };
-      return this.touching = true;
+      this.touching = true;
+      this.force = e.force;
+      return this.radius = min_radius;
     };
 
     Main.prototype.touchMove = function(e) {
       this.pos.x = e.pageX;
-      return this.pos.y = e.pageY;
+      this.pos.y = e.pageY;
+      return this.force = e.force;
     };
 
     Main.prototype.touchEnd = function(e) {
@@ -130,10 +134,8 @@
       return e.preventDefault();
     });
     $('#main_canvas').bind('touchmove', function(e) {
-      var forceLevel;
-      forceLevel = event["webkitForce"];
-      console.log(forceLevel);
       e = convert(e);
+      console.log(e.force);
       app.touchMove(e);
       return e.preventDefault();
     });
