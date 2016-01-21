@@ -44,6 +44,7 @@ class Main
         if not @touching
             return
         @ctx.fillStyle = 'white'
+        @ctx.beginPath()
         @ctx.moveTo(@pos.x, @pos.y)
         @ctx.arc(@pos.x, @pos.y, @radius, 0, Math.PI * 2, true)
         @ctx.fill()
@@ -54,6 +55,7 @@ class Main
         ux = -dy / dist
         uy = dx / dist
 
+        @ctx.beginPath()
         @ctx.moveTo(@prev_pos.x + ux * @prev_radius, @prev_pos.y + uy * @prev_radius)
         @ctx.lineTo(@pos.x + ux * @radius, @pos.y + uy * @radius)
         @ctx.lineTo(@pos.x - ux * @radius, @pos.y - uy * @radius)
@@ -63,6 +65,10 @@ class Main
 
         @prev_pos = {x: @pos.x, y: @pos.y}
         @prev_radius = @radius
+
+    erase: ->
+        @ctx.fillStyle = 'rgba(0, 0, 0, 0)'
+        @ctx.clearRect(0, 0, @canvas.width, @canvas.height)
 
     touchStart: (e) ->
         @pos.x =  e.pageX
@@ -97,6 +103,9 @@ $ ->
         app.touchEnd(e)
     $('#main_canvas').bind 'mouseup', (e) ->
         app.touchEnd(e)
+    $('#erase_button').click ->
+        app.erase()
+
 
     convert = (e) ->
         if not e.pageX

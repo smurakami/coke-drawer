@@ -65,6 +65,7 @@
         return;
       }
       this.ctx.fillStyle = 'white';
+      this.ctx.beginPath();
       this.ctx.moveTo(this.pos.x, this.pos.y);
       this.ctx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI * 2, true);
       this.ctx.fill();
@@ -73,6 +74,7 @@
       dist = Math.sqrt(dx * dx + dy * dy);
       ux = -dy / dist;
       uy = dx / dist;
+      this.ctx.beginPath();
       this.ctx.moveTo(this.prev_pos.x + ux * this.prev_radius, this.prev_pos.y + uy * this.prev_radius);
       this.ctx.lineTo(this.pos.x + ux * this.radius, this.pos.y + uy * this.radius);
       this.ctx.lineTo(this.pos.x - ux * this.radius, this.pos.y - uy * this.radius);
@@ -84,6 +86,11 @@
         y: this.pos.y
       };
       return this.prev_radius = this.radius;
+    };
+
+    Main.prototype.erase = function() {
+      this.ctx.fillStyle = 'rgba(0, 0, 0, 0)';
+      return this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     };
 
     Main.prototype.touchStart = function(e) {
@@ -138,6 +145,9 @@
     });
     $('#main_canvas').bind('mouseup', function(e) {
       return app.touchEnd(e);
+    });
+    $('#erase_button').click(function() {
+      return app.erase();
     });
     convert = function(e) {
       if (!e.pageX) {
